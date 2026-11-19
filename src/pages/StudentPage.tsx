@@ -1,54 +1,36 @@
 import { useState } from 'react'
-
+import AppShell, { type NavItem } from '../components/AppShell'
 import ExamPage from './ExamPage'
 import HistoryPage from './HistoryPage'
 import DashboardPage from './DashboardPage'
-import RankingPage from './RankingPage'
 import WrongAnswersPage from './WrongAnswersPage'
 import StudyByTopicPage from './StudyByTopicPage'
 import ProgressByTopicPage from './ProgressByTopicPage'
 import PracticeWrongAnswersPage from './PracticeWrongAnswersPage'
-
 import { useAuth } from '../contexts/AuthContext'
-
+const items: NavItem[] = [
+  { id: 'inicio', label: 'Inicio', icon: '⌂', description: 'Tu espacio de preparación' },
+  { id: 'simulacro', label: 'Simulacro general', icon: '▣', description: 'Evalúa tus conocimientos' },
+  { id: 'temas', label: 'Estudiar por temas', icon: '▤', description: 'Aprende a tu ritmo' },
+  { id: 'practicarFalladas', label: 'Practicar falladas', icon: '↻', description: 'Refuerza tus conocimientos' },
+  { id: 'progreso', label: 'Progreso por tema', icon: '▥', description: 'Mide tu avance' },
+  { id: 'historial', label: 'Historial', icon: '◷', description: 'Tus exámenes anteriores' },
+  { id: 'dashboard', label: 'Mis estadísticas', icon: '◫', description: 'Tus indicadores' },
+]
 export default function StudentPage() {
   const [page, setPage] = useState('inicio')
   const { usuario, logout } = useAuth()
-
-  // Panel profesional con tarjetas
-  if (page === 'inicio') {
-    return (
-      <div className="exam-page">
-        <div className="question-card">
-          <h1>Panel de Estudiante</h1>
-          <br />
-          <p>Bienvenido: <strong>{usuario?.nombre}</strong></p>
-          <p>Licencia hasta: <strong>{usuario?.fecha_vencimiento}</strong></p>
-          <br />
-
-          <div className="dashboard-cards">
-            <button onClick={() => setPage('simulacro')}>Simulacro General</button>
-            <button onClick={() => setPage('temas')}>Estudiar por Temas</button>
-            <button onClick={() => setPage('practicarFalladas')}>Practicar Preguntas Falladas</button>
-            <button onClick={() => setPage('progreso')}>Progreso por Tema</button>
-            <button onClick={() => setPage('historial')}>Historial</button>
-            <button onClick={() => setPage('dashboard')}>Dashboard</button>
-            <button onClick={() => setPage('ranking')}>Ranking</button>
-            <button onClick={logout}>Cerrar sesión</button>
-          </div>
-        </div>
-      </div>
-    )
+  const regresar = () => setPage('inicio')
+  let content: React.ReactNode
+  switch (page) {
+    case 'simulacro': content = <ExamPage regresar={regresar} />; break
+    case 'temas': content = <StudyByTopicPage regresar={regresar} />; break
+    case 'errores': content = <WrongAnswersPage regresar={regresar} />; break
+    case 'practicarFalladas': content = <PracticeWrongAnswersPage regresar={regresar} />; break
+    case 'progreso': content = <ProgressByTopicPage regresar={regresar} />; break
+    case 'historial': content = <HistoryPage regresar={regresar} />; break
+    case 'dashboard': content = <DashboardPage regresar={regresar} />; break
+    default: content = <div className="home-view"><div className="home-eyebrow">MI ESPACIO DE APRENDIZAJE <span className="live-dot" /> LICENCIA ACTIVA</div><h1>¡Hola, {usuario?.nombre || 'Estudiante'}!</h1><p className="home-subtitle">Cada pregunta es una oportunidad para acercarte a tu meta.</p><div className="hero-banner"><div><span className="hero-kicker">TU PREPARACIÓN EMPIEZA AQUÍ</span><h2>Tu próximo logro<br/>comienza hoy.</h2><p>Entrena con simulacros y revisa tus avances.</p><button onClick={() => setPage('simulacro')}>Comenzar simulacro <span aria-hidden="true">↗</span></button></div><div className="hero-emblem" aria-hidden="true">PNP<span>PRO</span></div></div><div className="license-strip"><span>◇</span><div><strong>Estado de tu licencia</strong><small>Vigencia: {usuario?.fecha_vencimiento || 'Consultar administración'}</small></div><span className="license-tag">ACTIVA</span></div><div className="section-heading"><h2>¿Qué deseas hacer hoy?</h2><span>Tu aprendizaje</span></div><div className="feature-grid">{items.filter(i => i.id !== 'inicio').map(i => <button className="feature-card" key={i.id} onClick={() => setPage(i.id)}><span className="feature-icon">{i.icon}</span><strong>{i.label}</strong><small>{i.description}</small><span className="feature-arrow">↗</span></button>)}</div></div>
   }
-
-  if (page === 'simulacro') return <ExamPage regresar={() => setPage('inicio')} />
-  if (page === 'temas') return <StudyByTopicPage regresar={() => setPage('inicio')} />
-  if (page === 'errores') return <WrongAnswersPage regresar={() => setPage('inicio')} />
-  if (page === 'practicarFalladas') return <PracticeWrongAnswersPage regresar={() => setPage('inicio')} />
-  if (page === 'progreso') return <ProgressByTopicPage regresar={() => setPage('inicio')} />
-  if (page === 'historial') return <HistoryPage regresar={() => setPage('inicio')} />
-  if (page === 'dashboard') return <DashboardPage regresar={() => setPage('inicio')} />
-  if (page === 'ranking') return <RankingPage regresar={() => setPage('inicio')} />
-
-  return <div>Página no encontrada</div>
+  return <AppShell role="alumno" userName={usuario?.nombre || 'Estudiante'} items={items} page={page} onNavigate={setPage} onLogout={logout}>{content}</AppShell>
 }

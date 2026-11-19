@@ -2,7 +2,7 @@ import { supabase } from './supabase'
 
 type UsuarioAuditoria = {
   id?: string
-  auth_id?: string
+  auth_user_id?: string
   nombre?: string
   correo?: string
   rol?: string
@@ -27,7 +27,7 @@ export async function registrarAuditoria({
     .from('auditoria')
     .insert({
       usuario_id: usuario?.id || null,
-      auth_id: usuario?.auth_id || null,
+      auth_id: usuario?.auth_user_id || null,
       nombre: usuario?.nombre || 'SIN USUARIO',
       correo: usuario?.correo || 'SIN CORREO',
       rol: usuario?.rol || 'SIN ROL',

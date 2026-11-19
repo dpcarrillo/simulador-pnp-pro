@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase'
 
 type Usuario = {
   id: string
-  auth_id: string | null
+  auth_user_id: string | null
   nombre: string
   correo: string
   rol: string
@@ -17,7 +17,7 @@ type Props = {
 }
 
 const usuarioVacio = {
-  auth_id: '',
+  auth_user_id: '',
   nombre: '',
   correo: '',
   rol: 'alumno',
@@ -98,7 +98,7 @@ export default function UserManagementPage({ regresar }: Props) {
       const { error } = await supabase
         .from('usuarios')
         .update({
-          auth_id: form.auth_id || null,
+          auth_user_id: form.auth_user_id || null,
           nombre: form.nombre,
           correo: form.correo,
           rol: form.rol,
@@ -116,7 +116,7 @@ export default function UserManagementPage({ regresar }: Props) {
       alert('Usuario actualizado')
     } else {
       const { error } = await supabase.from('usuarios').insert({
-        auth_id: form.auth_id || null,
+        auth_user_id: form.auth_user_id || null,
         nombre: form.nombre,
         correo: form.correo,
         rol: form.rol,
@@ -141,7 +141,7 @@ export default function UserManagementPage({ regresar }: Props) {
     setEditandoId(usuario.id)
 
     setForm({
-      auth_id: usuario.auth_id || '',
+      auth_user_id: usuario.auth_user_id || '',
       nombre: usuario.nombre || '',
       correo: usuario.correo || '',
       rol: usuario.rol || 'alumno',
@@ -248,15 +248,15 @@ export default function UserManagementPage({ regresar }: Props) {
 
         <p>
           Recuerda: el usuario debe existir también en Supabase Authentication.
-          Copia su UID en el campo auth_id.
+          Copia su UID en el campo auth_user_id.
         </p>
 
         <br />
 
         <input
           placeholder="Auth ID / UID de Supabase Auth"
-          value={form.auth_id}
-          onChange={e => cambiarCampo('auth_id', e.target.value)}
+          value={form.auth_user_id}
+          onChange={e => cambiarCampo('auth_user_id', e.target.value)}
         />
 
         <br />
@@ -386,7 +386,7 @@ export default function UserManagementPage({ regresar }: Props) {
                         ? 'Vencida'
                         : 'Activa'}
                     </td>
-                    <td>{usuario.auth_id ? 'Vinculado' : 'Pendiente'}</td>
+                    <td>{usuario.auth_user_id ? 'Vinculado' : 'Pendiente'}</td>
                     <td>
                       <button onClick={() => editarUsuario(usuario)}>
                         Editar

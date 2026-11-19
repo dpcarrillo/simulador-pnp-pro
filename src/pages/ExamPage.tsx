@@ -445,159 +445,92 @@ export default function ExamPage({
     ['E', pregunta.alternativa_e],
   ]
 
+  const sinContestar = preguntas.length - respondidas
+  const respuestasRegistradas = preguntas
+    .map((p, index) => respuestas[p.id] ? `${index + 1}${respuestas[p.id]}` : null)
+    .filter((valor): valor is string => valor !== null)
+
   return (
-    <div className="exam-page">
-      <header className="exam-header">
-        <div className="exam-header-top">
-          <div>
-            <h2>{tema ? 'Examen por Tema' : 'Simulador Ascenso PNP'}</h2>
-
-            <p>
-              {tema
-                ? `${tema} | ${preguntas.length} preguntas`
-                : '100 preguntas | 120 minutos'}
-            </p>
-          </div>
-
-          <div className="exam-info">
-            <div>⏱ {formatTime(secondsLeft)}</div>
-
-            <div>
-              Respondidas
-              <br />
-              {respondidas}/{preguntas.length}
-            </div>
-
-            <div>
-              Marcadas
-              <br />
-              {marcadas.length}
-            </div>
-          </div>
-        </div>
-
-        <div className="progress-bar" style={{ width: `${progreso}%` }} />
+    <div className="exam-page exam-2027">
+      <header className="exam-institutional-header">
+        <h1>POLICÍA NACIONAL DEL PERÚ</h1>
+        <p>SIMULADOR PARA EL PROCESO DE ASCENSO DE SUBOFICIALES DE LA POLICÍA NACIONAL DEL PERÚ - PROMOCIÓN 2027</p>
       </header>
 
+      <div className="exam-2027-toolbar">
+        <strong>Pregunta {actual + 1} de {preguntas.length}</strong>
+        <span className="exam-2027-topic" title={pregunta.tema}>{pregunta.tema}</span>
+        <span className="exam-2027-clock" aria-label="Tiempo restante">◷ {formatTime(secondsLeft)}</span>
+        <button type="button" className="exam-2027-finish" onClick={() => finalizarExamen(true)}>Finalizar examen</button>
+      </div>
+
       <div className="exam-layout">
-        <aside className="navigator">
-          <h3>Navegador de preguntas</h3>
-
-          <div className="legend">
-            <span>
-              <div className="dot active-dot"></div>
-              Actual
-            </span>
-
-            <span>
-              <div className="dot answered-dot"></div>
-              Respondida
-            </span>
-
-            <span>
-              <div className="dot marked-dot"></div>
-              Marcada
-            </span>
-          </div>
-
+        <aside className="navigator" aria-label="Navegador de preguntas">
           <div className="question-grid">
             {preguntas.map((p, index) => (
               <button
+                type="button"
                 key={p.id}
-                className={
-                  index === actual
-                    ? 'nav-question active'
-                    : marcadas.includes(p.id)
-                    ? 'nav-question marked'
-                    : respuestas[p.id]
-                    ? 'nav-question answered'
-                    : 'nav-question'
-                }
+                title={`Pregunta ${index + 1}${respuestas[p.id] ? ' · contestada' : ' · sin contestar'}${marcadas.includes(p.id) ? ' · marcada' : ''}`}
+                aria-label={`Pregunta ${index + 1}`}
+                aria-current={index === actual ? 'step' : undefined}
+                className={[
+                  'nav-question',
+                  index === actual ? 'active' : '',
+                  respuestas[p.id] ? 'answered' : '',
+                  marcadas.includes(p.id) ? 'marked' : '',
+                ].filter(Boolean).join(' ')}
                 onClick={() => cambiarPregunta(index)}
               >
-                {index + 1}
+                {String(index + 1).padStart(2, '0')}
               </button>
             ))}
           </div>
-
-          <button className="finish-btn" onClick={() => finalizarExamen(true)}>
-            Finalizar Examen
-          </button>
-
-          <br />
-          <br />
-
-          <button className="secondary" onClick={guardarYSalir}>
-            Guardar y salir
-          </button>
-
-          <br />
-          <br />
-
-          {regresar && (
-            <button className="secondary" onClick={regresar}>
-              Volver al Panel
-            </button>
-          )}
         </aside>
 
-        <main className="question-card">
-          <div className="question-meta">
-            <strong>
-              Pregunta {actual + 1} de {preguntas.length}
-            </strong>
-
-            <div className="topic-badge">{pregunta.tema}</div>
-          </div>
-
-          <h1>{pregunta.pregunta}</h1>
-
-          <div className="options">
-            {opciones.map(([letra, texto]) => (
-              <button
-                key={letra}
-                className={
-                  respuestas[pregunta.id] === letra
-                    ? 'option selected'
-                    : 'option'
-                }
-                onClick={() => responder(pregunta.id, letra)}
-              >
-                <span>{letra}</span>
-                {texto}
+        <div className="exam-2027-body">
+          <main className="question-card">
+            <h2 className="exam-2027-question">{actual + 1}. {pregunta.pregunta}</h2>
+            <div className="options">
+              {opciones.map(([letra, texto]) => (
+                <button
+                  type="button"
+                  key={letra}
+                  aria-pressed={respuestas[pregunta.id] === letra}
+                  className={respuestas[pregunta.id] === letra ? 'option selected' : 'option'}
+                  onClick={() => responder(pregunta.id, letra)}
+                >
+                  <span>{letra}</span><span className="exam-2027-answer-text">{texto}</span>
+                </button>
+              ))}
+            </div>
+            <div className="exam-2027-actions">
+              <button type="button" className="exam-2027-clear" disabled={!respuestas[pregunta.id]} onClick={() => {
+                const nuevasRespuestas = { ...respuestas }
+                delete nuevasRespuestas[pregunta.id]
+                setRespuestas(nuevasRespuestas)
+                guardarProgreso(nuevasRespuestas, marcadas, actual, secondsLeft)
+              }}>Borrar respuesta</button>
+              <button type="button" className={marcadas.includes(pregunta.id) ? 'exam-2027-mark is-marked' : 'exam-2027-mark'} onClick={() => marcarParaRevisar(pregunta.id)}>
+                {marcadas.includes(pregunta.id) ? '☑ Marcada para revisar' : '□ Marcar para revisar'}
               </button>
-            ))}
-          </div>
-
-          <div className="exam-actions">
-            <button
-              disabled={actual === 0}
-              onClick={() => cambiarPregunta(actual - 1)}
-            >
-              ← Anterior
-            </button>
-
-            <button
-              className={
-                marcadas.includes(pregunta.id)
-                  ? 'secondary marked-action'
-                  : 'secondary'
-              }
-              onClick={() => marcarParaRevisar(pregunta.id)}
-            >
-              {marcadas.includes(pregunta.id)
-                ? 'Marcada para revisar'
-                : 'Marcar para revisar'}
-            </button>
-
-            <button
-              disabled={actual === preguntas.length - 1}
-              onClick={() => cambiarPregunta(actual + 1)}
-            >
-              Siguiente →
-            </button>
-          </div>
-        </main>
+              <button type="button" className="exam-2027-save-inline" onClick={guardarYSalir}>Guardar y salir</button>
+              <div className="exam-2027-spacer" />
+              <button type="button" className="exam-2027-prev" disabled={actual === 0} onClick={() => cambiarPregunta(actual - 1)}>← Anterior</button>
+              <button type="button" className="exam-2027-next" disabled={actual === preguntas.length - 1} onClick={() => cambiarPregunta(actual + 1)}>Siguiente →</button>
+            </div>
+          </main>
+          <section className="exam-2027-summary" aria-label="Estado del examen">
+            <h3>Estado del examen</h3>
+            <div className="exam-2027-stats">
+              <div><strong className="stat-done">{respondidas}</strong><span>Preguntas contestadas</span></div>
+              <div><strong>{sinContestar}</strong><span>Preguntas sin contestar</span></div>
+              <div><strong className="stat-marked">{marcadas.length}</strong><span>Preguntas marcadas</span></div>
+              <div className="exam-2027-progress"><strong>{Math.round(progreso)}%</strong><span>Progreso del examen</span><div className="exam-2027-track"><div style={{ width: `${progreso}%` }} /></div></div>
+            </div>
+            <p className="exam-2027-registered"><strong>Respuestas registradas:</strong> {respuestasRegistradas.length ? respuestasRegistradas.join(', ') : 'Ninguna todavía'}</p>
+          </section>
+        </div>
       </div>
     </div>
   )

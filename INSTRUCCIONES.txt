@@ -1,0 +1,16 @@
+SIMULADOR PNP PRO - REDISEÑO
+
+1. Haz una copia de seguridad de tu carpeta frontend.
+2. Extrae este ZIP en C:\PROYECTO EXAMEN\frontend y acepta reemplazar los archivos.
+3. No borres tu .env actual ni tus archivos personales.
+4. En la terminal ejecuta: npm install
+5. Ejecuta: npm run build
+6. Ejecuta: npm run dev
+7. Verifica visualmente inicio de sesion, administrador, alumno y simulacro.
+8. Solo despues de probar publica con git add ., git commit y git push.
+
+NOTA IMPORTANTE: El codigo recibido buscaba usuarios por auth_id, pero tu captura
+mostraba la columna auth_user_id. Se ha corregido la consulta a auth_user_id.
+Cada cuenta necesita un auth_user_id correcto. No se han modificado tablas SQL ni
+politicas RLS. La finalizacion de examenes y los permisos requieren pruebas reales.
+No desactives RLS para resolver errores de permisos.

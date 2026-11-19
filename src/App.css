@@ -275,7 +275,7 @@ body {
   border-color: #16a34a;
 }
 
-.option.selected span {
+.option.selected > span:first-child {
   background: #16a34a;
   border-color: #16a34a;
   color: white;
@@ -602,4 +602,460 @@ tr:hover td {
 .admin-menu-grid button {
   min-height: 70px;
   font-size: 15px;
+}
+/* ===== SIMULADOR PNP PRO · REDISEÑO 2026 ===== */
+:root{font-family:Inter,'Segoe UI',Arial,sans-serif;color:#e9f2ff;background:#07101e;font-synthesis:none}
+body{background:#07101e;color:#e9f2ff}
+button,input,select,textarea{font-family:inherit}
+button{transition:background .2s,border-color .2s,transform .2s}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #52e5a0;outline-offset:3px}
+.app-shell{display:flex;min-height:100vh;background:radial-gradient(ellipse at 80% 0%,rgba(17,91,88,.12),transparent 43%),#080f1d}
+.app-sidebar{width:266px;flex:0 0 266px;min-height:100vh;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:27px 17px 20px;background:#0b1626;border-right:1px solid #1c3040;z-index:20}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 8px 37px;cursor:pointer}
+.brand-symbol{display:grid;place-items:center;width:43px;height:43px;flex-shrink:0;border-radius:14px;background:linear-gradient(135deg,#23d998,#087b77);color:#04241d;font-size:29px;box-shadow:0 8px 30px #16b88c24}
+.brand strong{font-size:15px;letter-spacing:.6px;white-space:nowrap}.brand em{font-style:normal;color:#42e8ab}.brand small{display:block;margin-top:5px;font-size:8px;letter-spacing:1.2px;color:#7e9eae}
+.nav-label{font-size:10px;font-weight:800;letter-spacing:1.8px;color:#617b8d;padding:0 14px;margin-bottom:15px}
+.sidebar-nav{display:flex;flex-direction:column;gap:6px;overflow-y:auto}
+.sidebar-link{position:relative;display:flex;align-items:center;gap:13px;width:100%;padding:13px 15px;text-align:left;border:1px solid transparent;border-radius:11px;background:transparent;color:#9fb0c3;font-size:13px;font-weight:600}
+.sidebar-link:hover{background:#13263a;color:white}.sidebar-link.current{background:linear-gradient(90deg,#11463e,#11302f);border-color:#206d59;color:#72f3b8}
+.nav-icon{font-size:21px;width:23px;text-align:center;font-weight:500}.nav-active-indicator{width:5px;height:5px;border-radius:50%;background:#51f2b2;margin-left:auto}
+.sidebar-bottom{margin-top:auto;padding-top:18px}.sidebar-help{display:flex;flex-direction:column;gap:7px;padding:17px;border:1px solid #235147;border-radius:14px;background:linear-gradient(140deg,#123b35,#102a33)}.sidebar-help>span{font-size:25px;color:#65e7a8}.sidebar-help strong{font-size:12px}.sidebar-help small{font-size:11px;color:#a4b6c2}.sidebar-logout{display:flex;align-items:center;gap:12px;margin-top:16px;width:100%;background:transparent;color:#b1c3d1;text-align:left;padding:13px 16px}.sidebar-logout:hover{background:#2c2030}.sidebar-logout span{font-size:22px}
+.app-main{min-width:0;flex:1;display:flex;flex-direction:column}.app-topbar{min-height:79px;display:flex;align-items:center;justify-content:space-between;padding:15px 34px;border-bottom:1px solid #1c3040;background:#0b1624cc;gap:14px}.topbar-left,.topbar-right{display:flex;align-items:center;gap:14px}.topbar-left{font-size:13px;color:#9db0c0}.topbar-left strong{color:#e8f7fa}.breadcrumb-sep{color:#436174}.role-chip{border:1px solid #276b56;border-radius:7px;background:#123b31;color:#6deeb3;font-size:9px;letter-spacing:1px;padding:8px 10px;font-weight:800}.user-avatar{display:grid;place-items:center;background:#1d6b58;border:1px solid #3cbd91;width:37px;height:37px;border-radius:11px;font-weight:800}.topbar-user{display:flex;flex-direction:column;gap:3px}.topbar-user strong{font-size:12px}.topbar-user small{font-size:10px;color:#7f9aac}.menu-toggle{display:none;background:#15283b}
+.app-content{flex:1;min-width:0;padding:34px;max-width:1600px;width:100%;margin:0 auto}.app-footer{padding:20px 34px;border-top:1px solid #182b39;color:#648093;font-size:10px;letter-spacing:1px;display:flex;justify-content:space-between;gap:12px}
+.home-eyebrow{font-size:10px;letter-spacing:2px;font-weight:800;color:#54e2a8;display:flex;align-items:center;gap:9px}.live-dot{width:6px;height:6px;border-radius:50%;background:#4ce5a0;box-shadow:0 0 12px #4ce5a0}.home-view>h1{font-size:clamp(27px,3vw,39px);letter-spacing:-1px;margin:15px 0 7px;font-weight:800}.home-subtitle{color:#92a8b9;font-size:14px;margin-bottom:26px}
+.hero-banner{min-height:238px;display:flex;justify-content:space-between;align-items:center;gap:20px;overflow:hidden;padding:33px 42px;border:1px solid #256b59;border-radius:19px;background:radial-gradient(circle at 85% 40%,#246e615c,transparent 38%),linear-gradient(110deg,#103c35,#102d34 65%,#0c222c);position:relative}.hero-banner h2{font-size:clamp(24px,3vw,34px);line-height:1.18;letter-spacing:-.7px;margin:12px 0}.hero-banner p{color:#abc9c8;font-size:13px}.hero-kicker{color:#7ceeb8;letter-spacing:1.7px;font-size:10px;font-weight:800}.hero-banner button{margin-top:22px;background:#3de3a0;color:#08251d;padding:12px 19px}.hero-banner button:hover{background:#86ffd0}.hero-banner button span{margin-left:12px}.hero-emblem{width:190px;height:190px;border:2px solid #4acb9b66;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 16px #4acb9b0b,0 0 0 36px #4acb9b09;font-size:45px;letter-spacing:3px;font-weight:900;color:#85f5c8;transform:rotate(-10deg);flex-shrink:0}.hero-emblem span{font-size:15px;letter-spacing:7px}
+.section-heading{display:flex;align-items:center;justify-content:space-between;margin:29px 0 16px}.section-heading h2{font-size:19px;margin:0}.section-heading>span{font-size:11px;color:#7693a3}.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.feature-card{position:relative;min-height:166px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;padding:20px;background:#101e30;border:1px solid #24394b;border-radius:15px;color:#eaf5ff}.feature-card:hover{background:#142c3b;border-color:#2bba87;transform:translateY(-2px)}.feature-icon{display:grid;place-items:center;width:42px;height:42px;background:#153e3b;border:1px solid #276c59;color:#65f2b4;border-radius:11px;font-size:25px;margin-bottom:17px}.feature-card strong{font-size:14px;margin-bottom:5px}.feature-card small{color:#819aab;font-size:11px}.feature-arrow{position:absolute;right:20px;top:21px;color:#6ba58f}.license-strip{display:flex;align-items:center;gap:15px;background:#101f30;border:1px solid #25463e;border-radius:13px;padding:16px 21px;margin-top:18px}.license-strip>span:first-child{font-size:24px;color:#60e9aa}.license-strip div{display:flex;flex-direction:column;gap:4px}.license-strip strong{font-size:12px}.license-strip small{font-size:11px;color:#92aabc}.license-tag{margin-left:auto;border-radius:20px;padding:7px 10px;background:#143d2f;color:#67eab0;font-size:10px;font-weight:800}
+/* Existing pages inside the new application shell */
+.app-content .exam-page{min-height:auto;padding:0;background:transparent}.app-content .question-card,.app-content .navigator{background:#101e30;border-color:#263e50;border-radius:16px;box-shadow:0 8px 30px #00000012}.app-content .question-card{padding:25px}.app-content .exam-header{background:linear-gradient(110deg,#135b48,#0f403c);border-color:#2b936c}.app-content .topic-card,.app-content .admin-stat-card{background:#13263a;border-color:#284154}.app-content .admin-stat-card h2{color:#5ee8a9}.app-content input,.app-content select,.app-content textarea{background:#0c1b2d;border-color:#294054}.app-content th{background:#152d3d}.app-content .option{background:#11253a}.app-content .option:hover{background:#19394a}.app-content .option.selected{background:#143d34}.app-content .question-card h1{font-weight:750}.app-content .admin-menu-grid button,.app-content .dashboard-cards button{border:1px solid #287557;background:#133f35}.app-content .admin-menu-grid button:hover,.app-content .dashboard-cards button:hover{background:#17634b}
+/* Login */
+.login-screen{min-height:100vh;background:#080f1d;position:relative;overflow:hidden}.login-decor{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px)}.decor-one{width:450px;height:450px;left:-180px;top:-140px;background:#0c70553b}.decor-two{width:500px;height:500px;right:-240px;bottom:-200px;background:#11695835}.login-layout{min-height:100vh;max-width:1450px;margin:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}.login-presentation{padding:55px 65px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#0d2630cc,#08111b55);border-right:1px solid #1b3c42}.login-brand{display:flex;align-items:center;gap:13px}.login-brand strong{font-size:20px;letter-spacing:.7px}.login-brand em{font-style:normal;color:#60e9a7}.login-brand strong small{color:#6de9af;font-size:11px}.login-copy{max-width:550px}.login-overline{color:#66eab2;font-size:11px;font-weight:800;letter-spacing:2px}.login-copy h1{font-size:clamp(40px,4.5vw,70px);line-height:1.08;letter-spacing:-2.5px;margin:20px 0 24px}.login-copy h1 span{color:#60e5ac}.login-copy p{font-size:16px;color:#a7bac9;line-height:1.8;max-width:480px}.login-benefits{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}.login-benefits span{border:1px solid #2b6657;border-radius:25px;background:#113d35;padding:10px 13px;color:#9ee9ca;font-size:11px}.login-footnote{color:#698796;font-size:10px;letter-spacing:2px}.login-form-area{display:grid;place-items:center;padding:40px}.login-card{width:100%;max-width:440px;padding:44px;background:#0e1d2c;border:1px solid #284151;border-radius:22px;box-shadow:0 35px 100px #0004}.login-card-icon{width:54px;height:54px;display:grid;place-items:center;background:#164f41;color:#70efb6;border-radius:16px;font-size:30px;margin-bottom:24px}.login-form-eyebrow{color:#65e4a9;font-size:10px;letter-spacing:1.7px;font-weight:800}.login-card h2{font-size:30px;margin:10px 0}.login-card>p{color:#9aafbe;font-size:13px;margin-bottom:31px}.login-card label{display:block;margin:18px 0 9px;color:#c3d6df;font-size:12px;font-weight:700}.login-card input{width:100%;background:#0a1726;border:1px solid #2c4556;padding:15px;border-radius:11px;color:white;outline:none;font-size:14px}.login-card input:focus{border-color:#54e6aa;box-shadow:0 0 0 3px #1bd89c18}.password-field{position:relative}.password-field input{padding-right:80px}.show-password{position:absolute;right:9px;top:8px;background:transparent;color:#6de6b0;padding:8px;font-size:11px}.show-password:hover{background:#1c3d3b}.login-submit{width:100%;margin-top:28px;background:#39d99a;color:#05251b;display:flex;justify-content:space-between;align-items:center;padding:15px 18px}.login-submit:hover{background:#7df4c1}.login-note{margin-top:22px;color:#7f9aa9;font-size:11px;text-align:center;line-height:1.7}.login-error{background:#421f2a;border:1px solid #a84859;color:#ffb6be;padding:12px;border-radius:9px;margin-top:17px;font-size:12px}
+.mobile-backdrop{display:none}
+@media(max-width:1100px){.app-sidebar{width:225px;flex-basis:225px}.app-content{padding:25px}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-emblem{width:145px;height:145px;font-size:34px}.login-presentation{padding:40px}}
+@media(max-width:760px){.app-sidebar{position:fixed;left:0;top:0;transform:translateX(-100%);transition:transform .2s;width:266px;height:100dvh}.app-sidebar.open{transform:translateX(0)}.mobile-backdrop{display:block;position:fixed;inset:0;z-index:19;background:#0009;border:0;border-radius:0}.menu-toggle{display:block}.app-topbar{padding:13px 17px;min-height:66px}.topbar-user,.breadcrumb-root,.breadcrumb-sep{display:none}.app-content{padding:19px 15px}.hero-banner{padding:25px;min-height:215px}.hero-emblem{display:none}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.feature-card{min-height:156px;padding:14px}.app-footer{padding:18px}.login-layout{grid-template-columns:1fr}.login-presentation{padding:26px;border:0;background:transparent}.login-copy,.login-footnote{display:none}.login-form-area{padding:15px 20px 40px;align-items:start}.login-card{padding:30px 24px}.app-content .exam-layout{grid-template-columns:1fr}}
+@media(max-width:440px){.feature-grid{grid-template-columns:1fr}.feature-card{min-height:125px}.home-view>h1{font-size:27px}.hero-banner h2{font-size:26px}.role-chip{display:none}.app-content .question-card{padding:17px}.login-card{padding:25px 20px}.app-footer span{display:none}}
+
+
+/* ============================================================
+   CORRECCION NAVEGADOR DE EXAMEN - 4 COLUMNAS x 25 FILAS
+   Reglas aisladas para no alterar el resto del sistema.
+   ============================================================ */
+.app-content .exam-layout,
+.exam-page .exam-layout {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+}
+.app-content .navigator,
+.exam-page .navigator {
+  min-width: 0;
+  padding: 18px 16px;
+}
+.exam-page .navigator h3 {
+  font-size: 14px;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+.exam-page .legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 11px;
+  margin-bottom: 16px;
+}
+.exam-page .legend span { white-space: nowrap; }
+.exam-page .legend .dot { flex: 0 0 9px; width: 9px; height: 9px; }
+.exam-page .question-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(25, 29px);
+  grid-auto-flow: column;
+  gap: 5px 7px;
+  width: 100%;
+  margin: 0 0 22px;
+  justify-content: stretch;
+}
+.exam-page .question-grid .nav-question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  height: 29px;
+  min-height: 29px;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  border-radius: 7px;
+  font-size: 11px;
+  box-sizing: border-box;
+}
+.exam-page .question-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.exam-page .question-meta strong { flex: 0 0 auto; padding-top: 6px; }
+.exam-page .topic-badge {
+  width: fit-content;
+  max-width: min(48%, 520px);
+  margin-left: auto;
+  padding: 7px 11px;
+  font-size: 10px;
+  line-height: 1.45;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.exam-page .question-card { min-width: 0; }
+@media (max-width: 1050px) {
+  .app-content .exam-layout,
+  .exam-page .exam-layout { grid-template-columns: minmax(0, 1fr); }
+  .exam-page .navigator { max-width: 390px; width: 100%; }
+}
+@media (max-width: 600px) {
+  .exam-page .topic-badge { max-width: 100%; text-align: left; margin-left: 0; }
+  .exam-page .question-meta { flex-direction: column; }
+  .exam-page .navigator { max-width: 100%; }
+  .exam-page .question-grid { gap: 6px; }
+}
+
+/* ===== EXAMEN INSTITUCIONAL PNP · PROMOCIÓN 2027 ===== */
+.app-content .exam-2027,.exam-2027{padding:0;min-height:0;background:transparent}
+.exam-2027 .exam-institutional-header{padding:18px 20px 16px;text-align:center;background:linear-gradient(115deg,#0a1d2b,#0c302e,#0a1d2b);border:1px solid #1f6859;border-radius:14px 14px 0 0}
+.exam-2027 .exam-institutional-header h1{font-size:clamp(18px,2.5vw,29px);font-weight:850;line-height:1.2;letter-spacing:.5px;margin:0;color:#f2fbff}
+.exam-2027 .exam-institutional-header p{font-size:clamp(10px,1.1vw,13px);font-weight:750;line-height:1.5;color:#64eeb0;margin:7px auto 0;max-width:1050px}
+.exam-2027 .exam-2027-toolbar{display:flex;align-items:center;gap:16px;padding:10px 14px;background:#0e2733;border:1px solid #20564e;border-top:0;border-radius:0 0 12px 12px;margin-bottom:13px;min-width:0}
+.exam-2027 .exam-2027-toolbar>strong{white-space:nowrap;font-size:12px}
+.exam-2027 .exam-2027-topic{flex:1;min-width:0;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;font-weight:750;color:#5cf2aa}
+.exam-2027 .exam-2027-clock{white-space:nowrap;font-weight:850;font-variant-numeric:tabular-nums;color:#68efb4;font-size:17px}
+.exam-2027 .exam-2027-finish{flex-shrink:0;padding:9px 12px;background:#61232c;border:1px solid #ec5666;color:#fff;font-size:11px}
+.exam-2027 .exam-2027-finish:hover{background:#89313e}
+.app-content .exam-2027 .exam-layout,.exam-2027 .exam-layout{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:start}
+.app-content .exam-2027 .navigator,.exam-2027 .navigator{padding:9px 5px 10px;border-radius:12px;min-width:0;background:#101e30}
+.exam-2027 .navigator h3{font-size:10px;line-height:1.2;margin:0 0 9px;text-align:center}
+.exam-2027 .question-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(25,17px);grid-auto-flow:column;gap:2px;margin:0;justify-content:stretch}
+.exam-2027 .nav-question{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;height:17px;padding:0 1px;border-radius:4px;border:1px solid #344c60;background:#101c30;color:#dce8f4;font-size:10px;line-height:1;font-weight:650;font-variant-numeric:tabular-nums;transition:background .12s,border-color .12s}
+.exam-2027 .nav-question.answered{background:#15583e;color:#bdfde1;border-color:#2a9667}
+.exam-2027 .nav-question.marked{border-color:#eab308;color:#ffe08a;box-shadow:inset 0 0 0 1px #c79a14}
+.exam-2027 .nav-question.active{background:#19b567;border-color:#69ffc2;color:#06281a;box-shadow:0 0 0 1px #69ffc2}
+.exam-2027 .exam-2027-legend{display:flex;flex-direction:column;gap:5px;margin-top:11px;font-size:9px;color:#b9c9d5}
+.exam-2027 .exam-2027-legend span{display:flex;align-items:center;gap:5px}
+.exam-2027 .legend-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#1ebc74;flex-shrink:0}
+.exam-2027 .legend-dot.done{background:#78e9b6}.exam-2027 .legend-dot.flagged{background:#eab308}
+.exam-2027 .exam-2027-save{display:block;width:100%;padding:7px 2px;margin-top:10px;font-size:9px;background:#152d40;border:1px solid #345269}
+.exam-2027 .exam-2027-body{min-width:0;display:flex;flex-direction:column;gap:12px}
+.app-content .exam-2027 .question-card,.exam-2027 .question-card{padding:18px;border-radius:12px;background:#101e30}
+.exam-2027 .exam-2027-question{font-size:clamp(15px,1.65vw,21px);line-height:1.5;font-weight:800;margin:0 0 18px;color:#f4faff}
+.exam-2027 .options{gap:8px}
+.app-content .exam-2027 .option,.exam-2027 .option{display:flex;align-items:center;gap:11px;min-height:43px;padding:8px 12px;border-radius:9px;text-align:left;font-size:12px;line-height:1.4;font-weight:650}
+.exam-2027 .option>span:first-child{display:flex;align-items:center;justify-content:center;width:26px;height:26px;flex:0 0 26px;border:1px solid #39556b;border-radius:50%;font-weight:800}
+.exam-2027 .option .exam-2027-answer-text{width:auto;height:auto;border:0;display:block;flex:1;min-width:0;text-align:left;overflow-wrap:anywhere}
+.exam-2027 .exam-2027-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:18px}
+.exam-2027 .exam-2027-actions button{padding:9px 11px;font-size:11px;border-radius:8px}
+.exam-2027 .exam-2027-clear,.exam-2027 .exam-2027-prev{background:#1a3044;border:1px solid #365169}
+.exam-2027 .exam-2027-mark{background:#192b40;border:1px solid #476078;color:#d8e5f1}
+.exam-2027 .exam-2027-mark.is-marked{border-color:#eab308;color:#facc15}
+.exam-2027 .exam-2027-spacer{flex:1}
+.exam-2027 .exam-2027-next{background:#0caa60}
+.exam-2027 .exam-2027-summary{background:linear-gradient(120deg,#102d32,#0d2633);border:1px solid #1c6957;border-radius:12px;padding:15px 17px}
+.exam-2027 .exam-2027-summary h3{font-size:14px;margin:0 0 12px}
+.exam-2027 .exam-2027-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(140px,1.4fr);gap:10px}
+.exam-2027 .exam-2027-stats>div{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-right:1px solid #32545b;text-align:center}
+.exam-2027 .exam-2027-stats>div:last-child{border-right:0}
+.exam-2027 .exam-2027-stats strong{font-size:24px;font-weight:850;font-variant-numeric:tabular-nums}
+.exam-2027 .exam-2027-stats span{font-size:10px;color:#bed1d8}
+.exam-2027 .exam-2027-stats .stat-done{color:#63e7a8}.exam-2027 .exam-2027-stats .stat-marked{color:#facc15}
+.exam-2027 .exam-2027-track{width:85%;height:7px;border-radius:20px;background:#2d4555;overflow:hidden;margin-top:4px}
+.exam-2027 .exam-2027-track>div{height:100%;background:#16c784;border-radius:20px}
+.exam-2027 .exam-2027-registered{margin:13px 0 0;color:#b6d0d9;font-size:10px;line-height:1.6;overflow-wrap:anywhere}
+@media(max-width:900px){.exam-2027 .exam-2027-toolbar{gap:9px;flex-wrap:wrap}.exam-2027 .exam-2027-topic{order:4;flex:1 0 100%;text-align:left}.exam-2027 .exam-2027-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.exam-2027 .exam-2027-stats>div:nth-child(2){border-right:0}.exam-2027 .exam-2027-stats>div{padding:6px 0}}
+@media(max-width:520px){.app-content .exam-2027 .exam-layout,.exam-2027 .exam-layout{grid-template-columns:120px minmax(0,1fr);gap:7px}.app-content .exam-2027 .question-card,.exam-2027 .question-card{padding:11px}.exam-2027 .exam-2027-question{font-size:14px}.exam-2027 .exam-2027-actions{gap:5px}.exam-2027 .exam-2027-actions button{font-size:10px;padding:8px}.exam-2027 .exam-2027-spacer{display:none}.exam-2027 .exam-2027-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.exam-2027 .exam-2027-clock{font-size:14px}.exam-2027 .exam-2027-toolbar>strong{font-size:10px}}
+
+
+/* =============================================================
+   AJUSTE FINAL 19-11-2026: NAVEGADOR COMPACTO SIN SUPERPOSICION
+   Prevalece sobre .exam-page .question-grid .nav-question
+   ============================================================= */
+.app-content .exam-2027 .navigator,
+.exam-2027 .navigator {
+  box-sizing: border-box;
+  padding: 7px 5px 8px;
+}
+.app-content .exam-2027 .question-grid,
+.exam-2027 .question-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(25, 16px);
+  grid-auto-flow: column;
+  column-gap: 3px;
+  row-gap: 3px;
+  margin: 0;
+  width: 100%;
+  justify-content: stretch;
+  align-content: start;
+}
+.app-content .exam-2027 .question-grid .nav-question,
+.exam-page.exam-2027 .question-grid .nav-question {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 16px;
+  min-height: 0;
+  max-height: 16px;
+  padding: 0;
+  margin: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  font-size: 10px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  box-shadow: none;
+}
+/* Mantener resaltado visible de la pregunta actual. */
+.app-content .exam-2027 .question-grid .nav-question.active,
+.exam-page.exam-2027 .question-grid .nav-question.active {
+  box-shadow: inset 0 0 0 1px #69ffc2;
+}
+
+
+/* =============================================================
+   ENCABEZADO INSTITUCIONAL COMPACTO
+   ============================================================= */
+.exam-2027 .exam-institutional-header {
+  padding: 9px 14px 8px;
+}
+.exam-2027 .exam-institutional-header h1,
+.exam-2027 .exam-institutional-header h2 {
+  margin: 0;
+  line-height: 1.15;
+}
+.exam-2027 .exam-institutional-header p {
+  margin: 4px 0 0;
+  line-height: 1.25;
+}
+
+/* =============================================================
+   RESPUESTA SELECCIONADA: SIN FRANJA VERDE EN EL TEXTO
+   Causa: .option.selected span afectaba AMBOS spans: la letra
+   y el texto. El segundo span ocupa todo el ancho de la fila.
+   ============================================================= */
+.app-content .exam-2027 .option.selected,
+.exam-2027 .option.selected {
+  background: #103c30;
+  background-image: none;
+  border-color: #16a34a;
+}
+/* Solo el círculo A/B/C/D/E puede ser verde brillante. */
+.app-content .exam-2027 .option.selected > span:first-child,
+.exam-2027 .option.selected > span:first-child {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+/* El texto no debe heredar el fondo verde del círculo. */
+.app-content .exam-2027 .option.selected > .exam-2027-answer-text,
+.exam-2027 .option.selected > .exam-2027-answer-text {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  color: #fff;
+}
+
+
+/* =============================================================
+   PNP 2027 - NAVEGADOR SOLO NUMEROS / GUARDAR EN ACCIONES
+   Se conservan ENCABEZADO INSTITUCIONAL COMPACTO y estilos
+   de alternativa seleccionada sin franja verde.
+   ============================================================= */
+.app-content .exam-2027 .navigator,
+.exam-2027 .navigator {
+  padding: 6px 5px !important;
+  align-self: start;
+}
+.exam-2027 .exam-2027-body {
+  gap: 8px;
+}
+.exam-2027 .exam-2027-actions {
+  margin-top: 12px;
+  gap: 7px;
+}
+.exam-2027 .exam-2027-save-inline {
+  background: #173449;
+  border: 1px solid #396278;
+  color: #e5f5ff;
+  white-space: nowrap;
+}
+.exam-2027 .exam-2027-save-inline:hover {
+  background: #22516a;
+  border-color: #5a91a5;
+}
+.exam-2027 .exam-2027-summary {
+  padding: 11px 15px;
+}
+.exam-2027 .exam-2027-summary h3 {
+  margin-bottom: 8px;
+}
+.exam-2027 .exam-2027-registered {
+  margin-top: 8px;
+}
+@media (max-width: 650px) {
+  .exam-2027 .exam-2027-save-inline {
+    white-space: normal;
+  }
+}
+
+/* ALTERNATIVAS MAS COMPACTAS */
+
+.exam-page .options {
+  gap: 5px !important;
+}
+
+.exam-page .option {
+  min-height: 36px !important;
+  padding: 5px 10px !important;
+  gap: 10px !important;
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
+.exam-page .option > span:first-child {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  flex-shrink: 0;
+}
+
+
+/* ESTADO DEL EXAMEN MAS COMPACTO */
+
+/* Sustituir .exam-status por la clase real
+   del contenedor si utiliza otro nombre */
+
+.exam-page .exam-status {
+  padding: 10px 14px !important;
+  margin-top: 6px !important;
+  gap: 6px !important;
+}
+
+.exam-page .exam-status h3 {
+  margin: 0 0 5px !important;
+  font-size: 13px !important;
+}
+
+.exam-page .exam-status .stat-value {
+  font-size: 21px !important;
+  line-height: 1.1 !important;
+}
+
+.exam-page .exam-status .stat-label {
+  font-size: 10px !important;
+}
+
+/* ==========================================
+   SIMULADOR PNP 2027
+   REDUCCION DE ESPACIOS SUPERIORES
+   ========================================== */
+
+/* Espacio superior del contenido del examen */
+.app-content:has(.exam-page) {
+  padding-top: 4px !important;
+  padding-bottom: 8px !important;
+}
+
+/* Encabezado institucional compacto */
+.exam-header {
+  padding: 7px 12px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  gap: 2px !important;
+}
+
+.exam-header h1,
+.exam-header h2 {
+  margin: 0 !important;
+  line-height: 1.1 !important;
+}
+
+/* Subtitulo de promocion */
+.exam-header p {
+  margin: 2px 0 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Evitar margenes superiores adicionales */
+.exam-page {
+  margin-top: 0 !important;
+}
+
+/* Separacion entre bloques del examen */
+.exam-layout {
+  margin-top: 8px !important;
+  gap: 10px !important;
+}
+
+
+
+/* ==========================================
+   ESTADO DEL EXAMEN - VERSION COMPACTA
+   ========================================== */
+
+.exam-2027-summary {
+  padding: 6px 14px !important;
+  margin-top: 4px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  gap: 3px !important;
+}
+
+.exam-2027-summary h3 {
+  margin: 0 0 3px !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+}
+
+/* Reducir espacio entre elementos */
+.exam-2027-summary > div {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+/* Texto inferior de respuestas registradas */
+.exam-2027-summary > p {
+  margin: 3px 0 0 !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+
+/* ==========================================
+   ENCABEZADO INSTITUCIONAL COMPACTO
+   CENTRADO DEL TITULO Y SUBTITULO
+   ========================================== */
+
+.exam-institutional-header {
+  text-align: center !important;
+}
+
+.exam-institutional-header h1 {
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.exam-institutional-header p {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

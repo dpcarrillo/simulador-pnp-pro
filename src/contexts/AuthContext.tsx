@@ -9,7 +9,7 @@ import { supabase } from '../lib/supabase'
 
 type Usuario = {
   id: string
-  auth_id: string
+  auth_user_id: string
   nombre: string
   correo: string
   rol: string
@@ -60,7 +60,7 @@ export function AuthProvider({
     const { data, error } = await supabase
       .from('usuarios')
       .select('*')
-      .eq('auth_id', session.user.id)
+      .eq('auth_user_id', session.user.id)
       .single()
 
     if (error || !data) {
