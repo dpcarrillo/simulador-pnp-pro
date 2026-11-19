@@ -23,7 +23,7 @@ export default function StudentPage() {
   const regresar = () => setPage('inicio')
   let content: React.ReactNode
   switch (page) {
-    case 'simulacro': content = <ExamPage regresar={regresar} />; break
+    case 'simulacro': content = <ExamPage regresar={regresar} verHistorial={() => setPage('historial')} practicarErrores={() => setPage('practicarFalladas')} />; break
     case 'temas': content = <StudyByTopicPage regresar={regresar} />; break
     case 'errores': content = <WrongAnswersPage regresar={regresar} />; break
     case 'practicarFalladas': content = <PracticeWrongAnswersPage regresar={regresar} />; break

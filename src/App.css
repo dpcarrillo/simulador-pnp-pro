@@ -1059,3 +1059,53 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #52e5
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* RESULTADOS PNP 2027 - estilos aislados */
+.pnp-results{max-width:1250px;margin:0 auto;padding:24px;color:#eef5f7;font-family:inherit}.pnp-results-head{text-align:center;margin-bottom:20px}.pnp-results-head h1{font-size:clamp(23px,3vw,34px);margin:7px 0}.pnp-results-head p,.pnp-results-kicker{color:#94aabb}.pnp-results-kicker{font-size:12px;letter-spacing:1.5px}.pnp-results-score{display:flex;align-items:center;justify-content:center;gap:24px;background:linear-gradient(115deg,#09251f,#061826);border:1px solid #1a8659;border-radius:18px;padding:22px;margin-bottom:14px}.pnp-results-medal{font-size:65px}.pnp-results-score strong{font-size:clamp(38px,6vw,72px);line-height:1;display:block;color:#e9fff4}.pnp-results-score span{display:block;margin-top:9px;color:#7cf4af}.pnp-results-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.pnp-results-stats>div{background:#102536;border:1px solid #29495a;border-radius:12px;padding:15px;text-align:center}.pnp-results-stats b{display:block;font-size:26px;color:#fff}.pnp-results-stats span{font-size:13px;color:#bbccd8}.pnp-results-stats .pnp-good{color:#4de89c}.pnp-results-stats .pnp-bad{color:#ff8585}.pnp-results-message{text-align:center;border:1px solid #30ba74;background:linear-gradient(130deg,#092f24,#071e2d);border-radius:17px;padding:22px;margin:18px 0}.pnp-results-message>span{font-size:11px;color:#81e7b0;letter-spacing:1.6px}.pnp-results-message h2{font-size:clamp(19px,2.3vw,27px);color:#ffe18c;margin:10px 0}.pnp-results-message p{color:#c7d9df;margin:0}.pnp-results-topics,.pnp-results-review{border:1px solid #254758;background:#091b2b;border-radius:15px;padding:18px;margin:16px 0}.pnp-results-topics h2,.pnp-results-review h2{font-size:19px;margin:0 0 15px}.pnp-results-topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.pnp-results-topic{background:#112c3e;border:1px solid #305366;border-radius:11px;padding:13px}.pnp-results-topic strong{display:block;font-size:13px;min-height:34px}.pnp-results-topic span{display:block;text-align:right;color:#79e7ae;margin:8px 0}.pnp-results-track{height:7px;background:#365264;border-radius:8px;overflow:hidden}.pnp-results-track i{display:block;height:100%;background:#35d984;border-radius:8px}.pnp-results-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:20px}.pnp-results-actions button,.pnp-results-filter button{border:1px solid #436b80;background:#153146;color:#f2f8fa;border-radius:10px;padding:13px 9px;cursor:pointer;font-weight:600}.pnp-results-actions .pnp-results-home{background:#0b884c;border-color:#29d27d}.pnp-results-actions button:disabled{opacity:.4;cursor:not-allowed}.pnp-results-filter{display:flex;gap:10px;margin-bottom:12px}.pnp-results-filter .active{background:#137a4e}.pnp-results-review article{padding:16px;border:1px solid #305064;border-radius:10px;margin-bottom:12px}.pnp-results-review article h3{font-size:16px}.pnp-results-review article p{padding:7px 10px;border-radius:6px;margin:4px 0}.pnp-review-correct{background:#164f39;color:#adffd1}.pnp-review-wrong{background:#5a272d;color:#ffb9b9}.pnp-results-review small{color:#a8bac7}@media(max-width:760px){.pnp-results{padding:12px}.pnp-results-stats{grid-template-columns:repeat(2,1fr)}.pnp-results-actions{grid-template-columns:repeat(2,1fr)}.pnp-results-score{gap:12px}.pnp-results-medal{font-size:40px}}
+
+/* RESULTADOS: DISEÑO COMPACTO + CONTACTO COMERCIAL */
+.pnp-results{padding:8px 12px 20px}
+.pnp-results-head{margin-bottom:10px}
+.pnp-results-head h1{font-size:clamp(20px,2.6vw,30px);margin:4px 0}
+.pnp-results-head p{margin:3px 0;font-size:14px}
+.pnp-results-score{padding:12px;margin-bottom:9px;gap:15px;border-radius:14px}
+.pnp-results-medal{font-size:42px}
+.pnp-results-score strong{font-size:clamp(36px,5vw,56px)}
+.pnp-results-score span{margin-top:3px;font-size:14px}
+.pnp-results-stats{gap:9px}
+.pnp-results-stats>div{padding:9px 7px}
+.pnp-results-stats b{font-size:22px}
+.pnp-results-stats span{font-size:12px}
+.pnp-results-message{margin:10px 0;padding:12px 16px}
+.pnp-results-message h2{font-size:clamp(17px,2vw,23px);margin:5px 0}
+.pnp-results-message p{font-size:13px}
+.pnp-results-contact{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid #247f61;background:#0c2730;border-radius:12px;padding:10px 14px;margin:9px 0 13px}
+.pnp-results-contact-copy{display:flex;flex-direction:column;gap:2px}
+.pnp-results-contact-copy strong{color:#e9fff4;font-size:13px;letter-spacing:.4px}
+.pnp-results-contact-copy span{color:#b8ced7;font-size:12px}
+.pnp-results-whatsapp{color:#72efae;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.pnp-results-contact-pending{color:#a4b8c5;font-size:12px}
+.pnp-results-share{background:#0e8d5b;border:1px solid #43d99c;color:white;border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:700;font-size:13px}
+.pnp-results-share:hover{background:#10a76c}
+@media(max-width:760px){
+ .pnp-results{padding:5px 8px 15px}
+ .pnp-results-head{margin-bottom:9px}
+ .pnp-results-kicker{font-size:9px;letter-spacing:1px}
+ .pnp-results-head h1{font-size:21px;margin:3px 0}
+ .pnp-results-head p{font-size:12px}
+ .pnp-results-score{padding:9px;gap:12px}
+ .pnp-results-medal{font-size:32px}
+ .pnp-results-score strong{font-size:37px}
+ .pnp-results-score span{font-size:12px}
+ .pnp-results-stats{gap:7px}
+ .pnp-results-stats>div{padding:8px 4px}
+ .pnp-results-stats b{font-size:20px}
+ .pnp-results-stats span{font-size:11px}
+ .pnp-results-message{padding:10px;margin:9px 0}
+ .pnp-results-message h2{font-size:17px;line-height:1.25;margin:5px 0}
+ .pnp-results-message p{font-size:12px}
+ .pnp-results-contact{justify-content:center;text-align:center;padding:9px;gap:7px}
+ .pnp-results-contact-copy{width:100%}
+ .pnp-results-whatsapp{font-size:13px}
+ .pnp-results-share{padding:7px 10px}
+}

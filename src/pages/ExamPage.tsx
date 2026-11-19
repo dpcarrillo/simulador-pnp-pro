@@ -20,6 +20,8 @@ type Props = {
   tema?: string
   cantidad?: number
   regresar?: () => void
+  verHistorial?: () => void
+  practicarErrores?: () => void
 }
 
 const EXAM_DURATION = 120 * 60
@@ -28,6 +30,8 @@ export default function ExamPage({
   tema,
   cantidad = 100,
   regresar,
+  verHistorial,
+  practicarErrores,
 }: Props) {
   const { usuario } = useAuth()
 
@@ -41,6 +45,8 @@ export default function ExamPage({
   const [finalizado, setFinalizado] = useState(false)
   const [correctas, setCorrectas] = useState(0)
   const [incorrectas, setIncorrectas] = useState(0)
+  const [sinResponder, setSinResponder] = useState(0)
+  const [guardandoFinal, setGuardandoFinal] = useState(false)
   const [porcentaje, setPorcentaje] = useState(0)
   const [loading, setLoading] = useState(true)
 
@@ -262,7 +268,7 @@ export default function ExamPage({
 
     const preguntasFalladas = preguntas.filter(pregunta => {
       const respuestaUsuario = respuestas[pregunta.id]
-      return respuestaUsuario !== pregunta.respuesta
+      return Boolean(respuestaUsuario) && respuestaUsuario !== pregunta.respuesta
     })
 
     for (const pregunta of preguntasFalladas) {
@@ -317,7 +323,7 @@ export default function ExamPage({
   }
 
   async function finalizarExamen(preguntar = true) {
-    if (finalizado) return
+    if (finalizado || guardandoFinal) return
 
     if (preguntar) {
       const confirmar = window.confirm('¿Desea finalizar el examen?')
@@ -329,6 +335,7 @@ export default function ExamPage({
       return
     }
 
+    setGuardandoFinal(true)
     let aciertos = 0
 
     preguntas.forEach(pregunta => {
@@ -339,12 +346,14 @@ export default function ExamPage({
       }
     })
 
-    const errores = preguntas.length - aciertos
+    const omitidas = preguntas.filter(p => !respuestas[p.id]).length
+    const errores = preguntas.length - aciertos - omitidas
     const porcentajeFinal =
       preguntas.length > 0 ? (aciertos / preguntas.length) * 100 : 0
 
     setCorrectas(aciertos)
     setIncorrectas(errores)
+    setSinResponder(omitidas)
     setPorcentaje(porcentajeFinal)
 
     try {
@@ -367,6 +376,7 @@ export default function ExamPage({
       if (simulacroError) {
         console.error(simulacroError)
         alert('Error al guardar simulacro')
+        setGuardandoFinal(false)
         return
       }
 
@@ -383,6 +393,9 @@ export default function ExamPage({
 
       if (respuestasError) {
         console.error(respuestasError)
+        alert('El examen se guardó, pero hubo un error al registrar las respuestas. Contacte al administrador antes de repetirlo.')
+        setGuardandoFinal(false)
+        return
       }
 
       await registrarFalladas()
@@ -390,10 +403,12 @@ export default function ExamPage({
     } catch (error) {
       console.error(error)
       alert('Error inesperado al finalizar examen')
+      setGuardandoFinal(false)
       return
     }
 
     setFinalizado(true)
+    setGuardandoFinal(false)
   }
 
   if (finalizado) {
@@ -401,6 +416,11 @@ export default function ExamPage({
       <ResultsPage
         correctas={correctas}
         incorrectas={incorrectas}
+        sinResponder={sinResponder}
+        regresar={regresar}
+        verHistorial={verHistorial}
+        practicarErrores={practicarErrores}
+        detalle={preguntas.map(p => ({...p, marcada: respuestas[p.id] || null}))}
         porcentaje={porcentaje}
         tiempoUsado={formatTime(EXAM_DURATION - secondsLeft)}
       />
@@ -461,7 +481,7 @@ export default function ExamPage({
         <strong>Pregunta {actual + 1} de {preguntas.length}</strong>
         <span className="exam-2027-topic" title={pregunta.tema}>{pregunta.tema}</span>
         <span className="exam-2027-clock" aria-label="Tiempo restante">◷ {formatTime(secondsLeft)}</span>
-        <button type="button" className="exam-2027-finish" onClick={() => finalizarExamen(true)}>Finalizar examen</button>
+        <button type="button" className="exam-2027-finish" onClick={() => finalizarExamen(true)} disabled={guardandoFinal}>{guardandoFinal ? "Guardando..." : "Finalizar examen"}</button>
       </div>
 
       <div className="exam-layout">
